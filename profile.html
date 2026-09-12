@@ -1,176 +1,771 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pradeep Kavangal</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5f7">
+  <meta name="description" content="Pradeep Kavangal — Deputy Vice President at Kotak Mahindra Bank. Treasury applications, digital banking solutions, data engineering and product thinking.">
+
+  <title>Pradeep Kavangal — Digital Banking &amp; Treasury</title>
+
   <style>
+    :root {
+      --bg: #f5f5f7;
+      --surface: rgba(255,255,255,.72);
+      --surface-solid: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0,0,0,.08);
+      --accent: #0071e3;
+      --accent-soft: rgba(0,113,227,.10);
+      --shadow: 0 24px 70px rgba(0,0,0,.08);
+      --max: 1120px;
+      --radius: 28px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000;
+        --surface: rgba(28,28,30,.74);
+        --surface-solid: #1c1c1e;
+        --text: #f5f5f7;
+        --muted: #a1a1a6;
+        --line: rgba(255,255,255,.11);
+        --accent: #2997ff;
+        --accent-soft: rgba(41,151,255,.14);
+        --shadow: 0 24px 70px rgba(0,0,0,.32);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                   "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 85% 8%, rgba(0,113,227,.09), transparent 28rem),
+        radial-gradient(circle at 12% 34%, rgba(175,82,222,.08), transparent 24rem),
+        var(--bg);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-    header {
-      background: linear-gradient(135deg, #000000, #434343);
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
+
+    a { color: inherit; }
+    img { max-width: 100%; }
+
+    .wrap {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
     }
-    header h1 {
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: saturate(180%) blur(18px);
+      -webkit-backdrop-filter: saturate(180%) blur(18px);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--text); }
+
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      align-items: center;
+      padding: 92px 0 86px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 64px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 0 5px var(--accent-soft);
+    }
+
+    h1 {
       margin: 0;
-      font-size: 2.5rem;
+      max-width: 880px;
+      font-size: clamp(54px, 9vw, 112px);
+      line-height: .93;
+      letter-spacing: -.065em;
+      font-weight: 760;
     }
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
-      opacity: 0.8;
+
+    .hero-copy {
+      margin: 30px 0 0;
+      max-width: 720px;
+      font-size: clamp(20px, 2.5vw, 30px);
+      line-height: 1.18;
+      letter-spacing: -.025em;
+      color: var(--muted);
     }
-    nav {
-      background: #fff;
-      padding: 0.8rem;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+    .hero-meta {
+      display: grid;
+      gap: 10px;
+      justify-items: start;
+      padding-bottom: 8px;
     }
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
+
+    .meta-card {
+      width: 100%;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
     }
+
+    .meta-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+
+    .meta-value {
+      margin-top: 7px;
+      font-size: 20px;
+      letter-spacing: -.02em;
+      font-weight: 650;
+    }
+
     section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      padding: 110px 0;
+      border-top: 1px solid var(--line);
     }
-    h2 {
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
-      color: #222;
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      margin-bottom: 52px;
     }
+
+    .section-kicker {
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-weight: 700;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+
+    .summary {
+      max-width: 820px;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.22;
+      letter-spacing: -.025em;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 2px;
+    }
+
+    .role {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 42px;
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .role:first-child { border-top: 0; }
+
+    .role-year {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .role h3 {
+      margin: 0;
+      font-size: clamp(25px, 3vw, 36px);
+      letter-spacing: -.03em;
+      line-height: 1.05;
+    }
+
+    .role-org {
+      margin-top: 7px;
+      font-size: 17px;
+      color: var(--muted);
+    }
+
+    .role-detail {
+      margin: 20px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+    }
+
+    .role-location {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: 14px;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
     .card {
-      background: #fff;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
     }
-    ul {
-      list-style: none;
-      padding: 0;
+
+    .card h3 {
+      margin: 0 0 18px;
+      font-size: 28px;
+      letter-spacing: -.03em;
     }
-    ul li {
-      margin-bottom: 0.5rem;
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
     }
-    footer {
+
+    .certs {
+      display: grid;
+      gap: 0;
+    }
+
+    .cert {
+      padding: 17px 0;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .cert:first-child { border-top: 0; padding-top: 0; }
+    .cert:last-child { padding-bottom: 0; }
+
+    .cert span:last-child {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .education {
+      display: grid;
+      gap: 1px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .edu {
+      display: grid;
+      grid-template-columns: 160px 1fr 100px;
+      gap: 30px;
+      align-items: center;
+      padding: 26px 30px;
+      background: var(--surface-solid);
+    }
+
+    .edu-year {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .edu-school {
+      font-size: 19px;
+      font-weight: 650;
+      letter-spacing: -.015em;
+    }
+
+    .edu-degree {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 4px;
+    }
+
+    .edu-short {
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .contact {
+      padding-bottom: 130px;
+    }
+
+    .contact-box {
+      padding: clamp(34px, 7vw, 78px);
+      border-radius: 36px;
+      background: linear-gradient(135deg, var(--surface-solid), var(--surface));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
       text-align: center;
-      padding: 2rem;
-      background: #222;
-      color: #fff;
-      font-size: 0.9rem;
     }
-    a.button {
-      display: inline-block;
-      padding: 0.6rem 1.2rem;
-      margin-top: 1rem;
-      background: #007aff;
-      color: #fff;
-      border-radius: 6px;
+
+    .contact-box h2 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 80px);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    .contact-box p {
+      max-width: 620px;
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 19px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 650;
+      transition: transform .2s ease, background .2s ease;
     }
-    a.button:hover {
-      background: #005bb5;
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .button.secondary {
+      background: var(--surface);
+    }
+
+    footer {
+      padding: 0 0 35px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .reveal {
+      animation: reveal .75s cubic-bezier(.22,.61,.36,1) both;
+    }
+
+    .delay-1 { animation-delay: .08s; }
+    .delay-2 { animation-delay: .16s; }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 820px) {
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+      .nav-links { gap: 14px; }
+      .hero { min-height: auto; padding: 68px 0 76px; }
+      .hero-grid,
+      .section-head,
+      .split-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 42px; }
+      .section-head { gap: 18px; margin-bottom: 34px; }
+      section { padding: 78px 0; }
+      .role { grid-template-columns: 1fr; gap: 10px; padding: 28px 0; }
+      .edu {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 22px;
+      }
+      .edu-short { text-align: left; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner { min-height: 58px; }
+      .nav-links a:nth-child(2) { display: none; }
+      h1 { font-size: 60px; }
+      .hero-copy { font-size: 21px; }
+      .card { padding: 27px; }
+      .cert { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .footer-row { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { animation: none; }
+      .button { transition: none; }
     }
   </style>
 </head>
-<body>
 
-  <header>
-    <h1>Pradeep Kavangal</h1>
-    <p>Deputy Vice President at Kotak Mahindra Bank · Bengaluru, India</p>
-    <a href="mailto:pradeep.kavangal@gmail.com" class="button">Contact Me</a>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Pradeep Kavangal home">
+        Pradeep <span>Kavangal</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <a href="#summary">Summary</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#certifications">Certifications</a>
-  </nav>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Digital banking · Treasury · Product</div>
+          <h1>Build useful things.</h1>
+          <p class="hero-copy">
+            Pradeep Kavangal is a Deputy Vice President at Kotak Mahindra Bank,
+            developing solutions for Treasury applications and digital banking.
+          </p>
+        </div>
 
-  <section id="summary">
-    <h2>Summary</h2>
-    <div class="card">
-      <p>Developing solutions for Treasury applications. Extremely enthusiastic to provide Digital Banking Solutions.</p>
-    </div>
-  </section>
+        <aside class="hero-meta reveal delay-2" aria-label="Profile details">
+          <div class="meta-card">
+            <div class="meta-label">Based in</div>
+            <div class="meta-value">Bengaluru, Karnataka</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Current role</div>
+            <div class="meta-value">Deputy Vice President</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Focus</div>
+            <div class="meta-value">Treasury applications</div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="card">
-      <h3>Kotak Mahindra Bank</h3>
-      <p><strong>Deputy Vice President</strong> · Jun 2023 – Present · Bengaluru</p>
-      <p><strong>Chief Manager</strong> · Aug 2019 – Aug 2023 · Mumbai</p>
-    </div>
-    <div class="card">
-      <h3>YES BANK</h3>
-      <p><strong>Manager</strong> · May 2017 – Aug 2019 · Mumbai</p>
-    </div>
-    <div class="card">
-      <h3>Infosys</h3>
-      <p><strong>Systems Engineer</strong> · Sep 2012 – May 2015 · Hyderabad</p>
-      <p>Trained in JAVA, SQL, PLSQL. Led a team of 6 to design a Matrimonial Site project. Worked as IBM Maximo developer for 2 years.</p>
-    </div>
-    <div class="card">
-      <h3>PwC</h3>
-      <p><strong>Summer Intern</strong> · Apr 2016 – May 2016 · Bangalore</p>
-    </div>
-  </section>
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">01 / Perspective</div>
+          <div>
+            <h2 class="section-title">Technology with a business pulse.</h2>
+          </div>
+        </div>
 
-  <section id="education">
-    <h2>Education</h2>
-    <div class="card">
-      <ul>
-        <li><strong>IIM Calcutta</strong> · MBA (2015 – 2017)</li>
-        <li><strong>Interaction Design Foundation</strong> · UX Design (2018 – 2019)</li>
-        <li><strong>Chaitanya Bharathi Institute Of Technology</strong> · B.E. Electronics & Communications (2008 – 2012)</li>
-        <li><strong>Nava Vignana Bharathi Junior College</strong> · Intermediate (2005 – 2007)</li>
-        <li><strong>Shantinikethan High School</strong> · Primary & Secondary (till 2005)</li>
-      </ul>
-    </div>
-  </section>
+        <p class="summary">
+          Extremely enthusiastic about providing digital banking solutions,
+          with a career spanning software engineering, banking, consulting,
+          process improvement and product thinking.
+        </p>
 
-  <section id="skills">
-    <h2>Top Skills</h2>
-    <div class="card">
-      <ul>
-        <li>Business Process Improvement</li>
-        <li>Data Engineering</li>
-        <li>Java</li>
-      </ul>
-    </div>
-  </section>
+        <div class="pill-row" aria-label="Areas of expertise">
+          <span class="pill">Business Process Improvement</span>
+          <span class="pill">Data Engineering</span>
+          <span class="pill">Java</span>
+          <span class="pill">SQL / PLSQL</span>
+          <span class="pill">Digital Banking</span>
+          <span class="pill">Product Management</span>
+        </div>
+      </div>
+    </section>
 
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <div class="card">
-      <ul>
-        <li>AWS IoT - Device Management</li>
-        <li>Product Management</li>
-        <li>KPMG Six Sigma Certification</li>
-        <li>IoT Foundation - Telemetry</li>
-      </ul>
-    </div>
-  </section>
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">02 / Experience</div>
+          <div>
+            <h2 class="section-title">A career across code, banking and transformation.</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="role">
+            <div class="role-year">Jun 2023 — Present</div>
+            <div>
+              <h3>Deputy Vice President</h3>
+              <div class="role-org">Kotak Mahindra Bank</div>
+              <div class="role-location">Bengaluru, Karnataka, India</div>
+              <p class="role-detail">
+                Developing solutions for Treasury applications and contributing to
+                digital banking solutions.
+              </p>
+            </div>
+          </article>
+
+          <article class="role">
+            <div class="role-year">Aug 2019 — Aug 2023</div>
+            <div>
+              <h3>Chief Manager</h3>
+              <div class="role-org">Kotak Mahindra Bank</div>
+              <div class="role-location">Mumbai Area, India</div>
+            </div>
+          </article>
+
+          <article class="role">
+            <div class="role-year">May 2017 — Aug 2019</div>
+            <div>
+              <h3>Manager</h3>
+              <div class="role-org">YES BANK</div>
+              <div class="role-location">Mumbai Area, India</div>
+            </div>
+          </article>
+
+          <article class="role">
+            <div class="role-year">Apr 2016 — May 2016</div>
+            <div>
+              <h3>Summer Intern</h3>
+              <div class="role-org">PricewaterhouseCoopers</div>
+              <div class="role-location">Bangalore, India</div>
+            </div>
+          </article>
+
+          <article class="role">
+            <div class="role-year">Sep 2012 — May 2015</div>
+            <div>
+              <h3>Systems Engineer</h3>
+              <div class="role-org">Infosys</div>
+              <div class="role-location">Hyderabad Area, India</div>
+              <p class="role-detail">
+                Trained in Java, SQL and PLSQL. Headed a team of six for a mini
+                project designing a matrimonial site and successfully achieved
+                the project objectives. Later worked as an IBM Maximo developer.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="credentials">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">03 / Credentials</div>
+          <div>
+            <h2 class="section-title">Learning that follows the work.</h2>
+          </div>
+        </div>
+
+        <div class="split-grid">
+          <div class="card">
+            <h3>Certifications</h3>
+            <div class="certs">
+              <div class="cert">
+                <span>AWS IoT — Device Management</span>
+                <span>Certification</span>
+              </div>
+              <div class="cert">
+                <span>Product Management</span>
+                <span>Certification</span>
+              </div>
+              <div class="cert">
+                <span>KPMG Six Sigma Certification</span>
+                <span>Certification</span>
+              </div>
+              <div class="cert">
+                <span>IoT Foundation — Telemetry</span>
+                <span>Certification</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Languages</h3>
+            <div class="pill-row">
+              <span class="pill">English · Native / Bilingual</span>
+              <span class="pill">Telugu · Native / Bilingual</span>
+              <span class="pill">Hindi · Full Professional</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">04 / Education</div>
+          <div>
+            <h2 class="section-title">Engineering foundation. Business lens.</h2>
+          </div>
+        </div>
+
+        <div class="education">
+          <div class="edu">
+            <div class="edu-year">2015 — 2017</div>
+            <div>
+              <div class="edu-school">Indian Institute of Management, Calcutta</div>
+              <div class="edu-degree">Master of Business Administration (MBA)</div>
+            </div>
+            <div class="edu-short">MBA</div>
+          </div>
+
+          <div class="edu">
+            <div class="edu-year">2018 — 2019</div>
+            <div>
+              <div class="edu-school">The Interaction Design Foundation</div>
+              <div class="edu-degree">UX Design</div>
+            </div>
+            <div class="edu-short">UX</div>
+          </div>
+
+          <div class="edu">
+            <div class="edu-year">2008 — 2012</div>
+            <div>
+              <div class="edu-school">Chaitanya Bharathi Institute of Technology</div>
+              <div class="edu-degree">Bachelor of Engineering, Electronics and Communications Engineering</div>
+            </div>
+            <div class="edu-short">B.E.</div>
+          </div>
+
+          <div class="edu">
+            <div class="edu-year">2005 — 2007</div>
+            <div>
+              <div class="edu-school">Nava Vignana Bharathi Junior College</div>
+              <div class="edu-degree">Intermediate · Classes 11–12</div>
+            </div>
+            <div class="edu-short">School</div>
+          </div>
+
+          <div class="edu">
+            <div class="edu-year">Through 2005</div>
+            <div>
+              <div class="edu-school">Shantinikethan High School</div>
+              <div class="edu-degree">Primary and Secondary School · till Class 10</div>
+            </div>
+            <div class="edu-short">School</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <h2>Let’s build what’s next.</h2>
+          <p>
+            For conversations around digital banking, treasury applications,
+            product management or technology-led transformation.
+          </p>
+
+          <div class="actions">
+            <a class="button primary" href="mailto:pradeep.kavangal@gmail.com">Email Pradeep</a>
+            <a class="button secondary"
+               href="https://www.linkedin.com/in/pradeep-kavangal-60008858"
+               target="_blank"
+               rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a class="button secondary" href="tel:+919160908854">Call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>📞 9160908854 · ✉️ pradeep.kavangal@gmail.com · <a href="https://www.linkedin.com/in/pradeep-kavangal-60008858" style="color:#0a84ff;">LinkedIn</a></p>
-    <p>&copy; 2026 Pradeep Kavangal</p>
+    <div class="wrap footer-row">
+      <span>© Pradeep Kavangal</span>
+      <span>Designed as a single-file personal site.</span>
+    </div>
   </footer>
-
 </body>
 </html>
